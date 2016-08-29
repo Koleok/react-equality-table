@@ -25,33 +25,6 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": "airbnb",
-    "rules": {
-      "react/jsx-filename-extension": 0,
-      "comma-dangle": [
-        "error",
-        "always-multiline"
-      ],
-      "space-before-function-paren": 0,
-      "import/no-unresolved": 0,
-      "no-confusing-arrow": 0,
-      "spaced-comment": 1,
-      "keyword-spacing": 1,
-      "global-require": 0,
-      "func-names": 0,
-      "no-shadow": 0
-    },
-    "env": {
-      "mocha": true,
-      "node": true
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "experimentalObjectRestSpread": true
-      }
-    }
-  },
   "babel": {
     "presets": [
       "es2015",

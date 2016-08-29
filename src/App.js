@@ -1,4 +1,6 @@
 import React from 'react';
+import r from 'ramda';
+
 import logo from './logo.svg';
 import './App.css';
 
