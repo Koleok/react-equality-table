@@ -1,8 +1,10 @@
 /* eslint-disable eqeqeq */
 import r from 'ramda';
 
-export const strictEq = r.curry((x, y) => x === y ? 1 : 0);
-export const looseEq = r.curry((x, y) => x == y ? 1 : 0);
+export const states = { true: 'true', false: 'false' };
+
+export const strict = r.curry((x, y) => x === y);
+export const loose = r.curry((x, y) => x == y);
 
 export const makeMatrix =
   (fs, xs) => r.map(r.map(r.__, xs), fs);

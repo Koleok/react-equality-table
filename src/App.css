@@ -18,15 +18,15 @@
   font-size: large;
 }
 
-.Cell {
-  color: white;
+.Cell.false {
+  fill: lightgray;
 }
 
-.Cell.active {
-  color: lightgreen;
+.Cell.true {
+  fill: lightgreen;
 }
 
-@keyframes App-logo-spin {
+/*@keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
+}*/

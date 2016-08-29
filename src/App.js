@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Matrix from 'react-matrix';
 
-import { strictEq, looseEq, eqMatrix } from './utils';
+import { strict, loose, eqMatrix, states } from './utils';
 import logo from './logo.svg';
 import vals from './values';
 import './App.css';
@@ -18,28 +18,39 @@ class App extends Component {
   constructor(props) {
     super(props);
     this._toggleOperator = this._toggleOperator.bind(this);
-    this._makeMatrix = this._makeMatrix.bind(this);
-    this.state = { operator: looseEq };
+    this._matrix = this._matrix.bind(this);
+    this.state = { operator: loose, name: '==' };
   }
 
   _toggleOperator() {
-    const operator = this.state.operator === looseEq ? strictEq : looseEq;
-    this.setState({ operator });
+    const [operator, name] = this.state.operator === loose
+      ? [strict, '===']
+      : [loose, '=='];
+
+    this.setState({ operator, name });
   }
 
-  _makeMatrix() {
+  _matrix() {
     return eqMatrix(this.state.operator, vals);
   }
 
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" onClick={() => this._toggleOperator()} />
-          <h2>Welcome to React</h2>
+        <div
+          className="App-header"
+          onClick={() => this._toggleOperator()}
+          style={{ cursor: 'pointer' }}
+        >
+          <h1 alt="logo" src={logo} className="App-logo" >Click To change operator</h1>
+          <h2>x {this.state.name} y</h2>
         </div>
-        <div style={container(20)}>
-          <Matrix squareSize={30} matrix={this._makeMatrix()} />
+        <div style={container(50)}>
+          <Matrix
+            squareSize={30}
+            cellStates={states}
+            matrix={this._matrix()}
+          />
         </div>
       </div>
     );
