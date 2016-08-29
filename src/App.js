@@ -6,8 +6,9 @@ import logo from './logo.svg';
 import vals from './values';
 import './App.css';
 
-const container = (flexDirection = 'column') => ({
+const container = (paddingTop = 0, flexDirection = 'column') => ({
   flex: 1,
+  paddingTop,
   flexDirection,
   justifyContent: 'center',
   alignItems: 'center',
@@ -36,7 +37,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
-        <div style={container()}>
+        <div style={container(20)}>
           <Matrix squareSize={20} matrix={this._makeMatrix()} />
         </div>
       </div>
