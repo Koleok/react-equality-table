@@ -17,12 +17,13 @@ const container = (paddingTop = 0, flexDirection = 'column') => ({
 class App extends Component {
   constructor(props) {
     super(props);
-    this._changeOperator = this._changeOperator.bind(this);
+    this._toggleOperator = this._toggleOperator.bind(this);
     this._makeMatrix = this._makeMatrix.bind(this);
     this.state = { operator: looseEq };
   }
 
-  _changeOperator(operator) {
+  _toggleOperator() {
+    const operator = this.state.operator === looseEq ? strictEq : looseEq;
     this.setState({ operator });
   }
 
@@ -34,11 +35,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" onClick={() => this._toggleOperator()} />
           <h2>Welcome to React</h2>
         </div>
         <div style={container(20)}>
-          <Matrix squareSize={20} matrix={this._makeMatrix()} />
+          <Matrix squareSize={30} matrix={this._makeMatrix()} />
         </div>
       </div>
     );
