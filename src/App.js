@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Matrix from 'react-matrix';
 
-import { strict, loose, eqMatrix, states } from './utils';
-import logo from './logo.svg';
+import { strict, loose, eqMatrix, makeStates } from './utils';
 import vals from './values';
 import './App.css';
 
@@ -37,18 +36,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div
-          className="App-header"
-          onClick={() => this._toggleOperator()}
-          style={{ cursor: 'pointer' }}
-        >
-          <h1 alt="logo" src={logo} className="App-logo" >Click To change operator</h1>
+        <div className="App-header" onClick={() => this._toggleOperator()} >
+          <h1 className="App-logo">Click To change operator</h1>
           <h2>x {this.state.name} y</h2>
         </div>
         <div style={container(50)}>
           <Matrix
             squareSize={30}
-            cellStates={states}
+            cellStates={makeStates([true, false])}
             matrix={this._matrix()}
           />
         </div>
